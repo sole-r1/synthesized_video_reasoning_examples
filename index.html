@@ -95,6 +95,30 @@
     main {
     display: none;
   }
+  
+
+   video::-webkit-media-controls-panel {
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+video::-webkit-media-controls-enclosure {
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+video::-webkit-media-controls-overlay-enclosure {
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+video {
+  background: #000;
+}
+
+video::-webkit-media-controls-panel {
+  filter: invert(1) hue-rotate(180deg);
+}
   </style>
 </head>
 
@@ -139,6 +163,12 @@
   <script>
 
 
+
+
+
+
+
+
     const videoDescriptions = {
 'processed_0717_processed_0717_annot5_PnPCounterToCab_examples_PnPCounterToCab_demo_1247_lev6.1-two-NA_annot.mp4': 'pick the avocado bottle from the counter and place it in the cabinet',
 'TurnOnMicrowave_demo_1008_lev2.1-two-NA_annot.mp4': 'press the start button on the microwave',
@@ -146,11 +176,11 @@
 'processed_0717_processed_0717_annot2_PnPCounterToCab_examples_PnPCounterToCab_demo_115_lev4-two-NA_annot.mp4': 'pick the shaker from the counter and place it in the cabinet',
 'CloseDrawer_demo_1000_lev7-two-two_annot.mp4': 'close the left drawer',
 'processed_0717_processed_0717_annot2_PnPCounterToCab_examples_PnPCounterToCab_demo_1025_lev1-NA-NA_annot.mp4': 'pick the cucumber from the counter and place it in the cabinet',
-'CloseDrawer_demo_1001_lev1-NA-NA_annot.mp4': 'close the right drawer',
+'CloseDrawer_demo_1001_lev1-NA-NA_annot.mp4': 'close the left drawer',
 'processed_0717_processed_0717_annot2_PnPCounterToCab_examples_PnPCounterToCab_demo_1062_lev3-one-NA_annot.mp4': 'pick the squash from the counter and place it in the cabinet',
 'TurnOnMicrowave_demo_1074_lev1-NA-NA_annot.mp4': 'press the start button on the microwave',
 'processed_0717_processed_0717_annot2_PnPCounterToCab_examples_PnPCounterToCab_demo_1079_lev2.2-one-NA_annot.mp4': 'pick the teapot from the counter and place it in the cabinet',
-'CloseDrawer_demo_1003_lev3-two-NA_annot.mp4': 'close the right drawer',
+'CloseDrawer_demo_1003_lev3-two-NA_annot.mp4': 'close the left drawer',
 'OpenSingleDoor_demo_100_lev3-two-NA_annot.mp4': 'open the cabinet door',
 'TurnOnMicrowave_demo_1104_lev3-two-NA_annot.mp4': 'press the start button on the microwave',
 'CloseDrawer_demo_1007_lev2.1-one-NA_annot.mp4': 'close the right drawer',
@@ -310,6 +340,12 @@ taskList.forEach(task => {
     sourceElement.src = file;
     sourceElement.type = "video/mp4";
     videoElement.appendChild(sourceElement);
+
+  // videoElement.controls = true;
+  videoElement.setAttribute("controls", "");
+  // videoElement.setAttribute("controlslist", "nodownload nofullscreen noremoteplayback");
+    videoElement.setAttribute("controlslist", "");
+  videoElement.disablePictureInPicture = true;
 
     wrapper.appendChild(descriptionElement);
     wrapper.appendChild(levelElement);
